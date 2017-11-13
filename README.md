@@ -1,2 +1,2 @@
 # operating-system
-C_DAC DDESD MODUL
+C_DAC DESD MODUL
