@@ -7,9 +7,10 @@ char buffer[128]={0},buffer1[128]={0};
 int main()
 {
 	int fd,fd1;
+	mkfifo ("linkfifo",S_IRUSR|S_IWUSR);
 	while(1)
 	{
-		fd=open("dos",O_RDWR );
+		fd=open("linkfifo",O_RDWR );
 		read(0,buffer,128);
 		write(fd,buffer,128);
 		close(fd);

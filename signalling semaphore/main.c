@@ -8,8 +8,8 @@ void *Initthread(void *data)
 	while(1)
 	{
 		sem_wait(&init);
-		scanf("%d",&a);
-		scanf("%d",&b);
+		printf("enter the two numbers\n");
+		scanf("%d%d",&a,&b);
 		sem_post(&add);
 	}
 }
@@ -32,7 +32,7 @@ int main()
 	pthread_t tidInit,tidAdd;
 	pthread_create(&tidInit,NULL,Initthread,NULL);
 	pthread_create(&tidAdd,NULL,Addthread,NULL);
-	//pthread_join(tidInit,NULL );
+	pthread_join(tidInit,NULL );
 	pthread_join(tidAdd,NULL );
 	return 0;
 }	

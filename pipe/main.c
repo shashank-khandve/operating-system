@@ -8,14 +8,13 @@ int main()
 	pid_t id;
 	int p,sum;
 	int fd[2];
-	int buffer[2]={10,20};	
+	int buffer[2]={10,20};		
 	p=pipe(fd);
 	id=fork();
 	if(p==0)
 	{
 		if(id==0)
 		{	
-			int buffer1[2]={50,60};
 			close(fd[1]);
 			read(fd[0],buffer,2);
 			printf("%d\n",buffer[0]+buffer[1]);
@@ -23,7 +22,7 @@ int main()
 		else
 		{
 			close(fd[0]);
-			write(fd[1],buffer,2);
+			write(fd[1],buffer,1);
 			close(fd[1]);
 		}
 	}

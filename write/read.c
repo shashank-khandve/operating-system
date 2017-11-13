@@ -12,13 +12,12 @@
  	if(fd==-1)
  		perror("error while opening\n");
  	else
- 	fd1=read(fd,arr,15);
- 		if(fd1==-1)
- 			perror("error while reading\n");
- 		else 
+ 		fd1=read(fd,arr,15);
+ 	if(fd1==-1)
+ 		perror("error while reading\n");
+ 	else 
 	 	fd3=open("test1.c",O_CREAT|O_RDWR,S_IRWXU|S_IRWXG| S_IRWXO );
- 	//fd3=open("test1.text",O_RDWR);
- 		fd2=write(fd3,arr,15);
+ 	fd2=write(fd3,arr,15);
  	if(fd2==-1)
  		perror("error while writing\n");
  	close(fd);

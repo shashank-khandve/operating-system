@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <ctype.h>
+#include <string.h>
+#include <semaphore.h>
+
+sem_t audiosem;
+sem_t processingsem;
+int a,b;
+int arr1[30],arr2[30];
+
+void *audioThread(void *data)
+{
+	while(1)
+	{
+		sem_wait(&audio2processig);
+		scanf("%d\t%d",&a,&b);
+		sem_post(&processig2audio);
+	}
+}
+
+int main()
+{
+
+	pthread_t inputTid,calciTid;
+	sem_init(&input2calcisem,0,0);
+	sem_init(&calci2inputsem,0,1);
+	pthread_create(&inputTid,NULL,inputThread,NULL); 
+	pthread_create(&calciTid,NULL,calciThread,NULL);
+	pthread_join(inputTid,NULL);
+	pthread_join(calciTid,NULL);
+	sem_destroy(&input2calcisem);
+	sem_destroy(&calci2inputsem);
+	return 0;
+}
+
