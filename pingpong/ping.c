@@ -8,40 +8,35 @@
 #include <sys/mman.h>
 #include<sys/stat.h>     
 #include <semaphore.h>
-sem_t *sem1,*sem2;
-FILE *a;
-FILE *b;
-int *buffer1,*buffer2;
-void *writeThread(void *data)
+int main ()
 {
+	sem_t *semSHM,*semSHMW;
+	int *data;
+	int *tempBuffer;
+	int fd,fdBuffer;
+
+	semSHM=sem_open("semWrite1",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR,0);
+  	semSHMW=sem_open("semWrite2",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR,0);
+	
+
+  	fd=shm_open("sharedMem",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR);
+	ftruncate(fd,sizeof(int*));
+	data=mmap(NULL,sizeof(int*),PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
+
+  	fdBuffer=shm_open("sharedBuffer",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR);
+  	ftruncate(fdBuffer,sizeof(int*));
+  	tempBuffer=mmap(NULL,sizeof(int*),PROT_READ|PROT_WRITE,MAP_SHARED,fdBuffer,0);
+	*tempBuffer=10;
+	*data=0;
 	while(1)
 	{
-		sem_wait(&sem1);
-		write(a,buffer1,128);
-		sem_post(&sem2);
 		
-		sem_wait(&sem2);
-		write(b,buffer2,128);
-		sem_post(&sem1);
+		sem_wait(semSHM);
+  		*data=*data++;
+  		sem_post(semSHM);
+		sem_wait(semSHMW);	
+  		*tempBuffer=*tempBuffer++;
+		sem_post(semSHMW);
 	}
-}
-int main()
-{
-	int fd1,fd2;
-	fd1=shm_open("/shared element1",O_CREAT | O_RDWR,0600);
-	ftruncate(fd1,sizeof(int *));
-	buffer1=mmap(NULL,sizeof(int *),PROT_READ | PROT_WRITE,MAP_SHARED,fd1,1);
-	
-	fd2=shm_open("/shared element2",O_CREAT | O_RDWR,0600);
-	ftruncate(fd2,sizeof(int *));
-	buffer2=mmap(NULL,sizeof(int *),PROT_READ | PROT_WRITE,MAP_SHARED,fd2,0);
-	//return 0;
-	a=fopen("data1.txt",r);
-	b=fopen("data2.txt",r);
-	pthread_t writeTid;
-	sem1=sem_open("/write1",O_CREAT|O_RDWR,S_IWUSR|S_IRUSR,1);
-	sem2=sem_open("/write2",O_CREAT|O_RDWR,S_IWUSR|S_IRUSR,0);
-	pthread_create(&writeTid,NULL,writeThread,NULL); 
-	pthread_join(writeTid,NULL);
 	return 0;
 }
