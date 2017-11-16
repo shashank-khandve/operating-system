@@ -1,0 +1,48 @@
+7:		printf("enter your choice\n1.SCAN\n2.DUPLICATE\n3.SEARCH WORD\n4.LOG\n5.EXIT\n");
+9:		printf("\n");
+29:				printf("invalid entry\n");
+Fri Nov 17 00:38:33 IST 2017
+3
+7:		printf("enter your choice\n1.SCAN\n2.DUPLICATE\n3.SEARCH WORD\n4.LOG\n5.EXIT\n");
+9:		printf("\n");
+29:				printf("invalid entry\n");
+Fri Nov 17 00:41:45 IST 2017
+Number of times string occured
+3
+Line no. in which string occured
+7:		printf("enter your choice\n1.SCAN\n2.DUPLICATE\n3.SEARCH WORD\n4.LOG\n5.EXIT\n");
+9:		printf("\n");
+29:				printf("invalid entry\n");
+Fri Nov 17 00:50:45 IST 2017
+Duplicate files are
+[1] /home/shashank_redemption/Downloads/shashank/project/scandir.c~
+[2] /home/shashank_redemption/Downloads/shashank/project/scandir.c
+[3] /home/shashank_redemption/Downloads/shashank/scandir.c
+
+Set 1 of 5, preserve files [1 - 3, all]: 
+   [-] /home/shashank_redemption/Downloads/shashank/project/scandir.c~
+   [+] /home/shashank_redemption/Downloads/shashank/project/scandir.c
+   [-] /home/shashank_redemption/Downloads/shashank/scandir.c
+
+[1] /home/shashank_redemption/Downloads/shashank/project/main.c~
+[2] /home/shashank_redemption/Downloads/shashank/project/main.c
+
+Set 2 of 5, preserve files [1 - 2, all]: Fri Nov 17 00:52:08 IST 2017
+Duplicate files are
+[1] /home/shashank_redemption/Downloads/shashank/project/main.c~
+[2] /home/shashank_redemption/Downloads/shashank/project/main.c
+
+Set 1 of 4, preserve files [1 - 2, all]: Fri Nov 17 01:06:09 IST 2017
+Total number of files
+Fri Nov 17 01:10:01 IST 2017
+Total number of files and folders are scanned
+Fri Nov 17 01:14:41 IST 2017
+Fri Nov 17 01:16:22 IST 2017
+Fri Nov 17 01:18:10 IST 2017
+Fri Nov 17 01:18:49 IST 2017
+Fri Nov 17 01:23:20 IST 2017
+Fri Nov 17 01:24:25 IST 2017
+Fri Nov 17 01:31:36 IST 2017
+Total number of %d files and %d folders are scanned,a,b
+Fri Nov 17 01:36:11 IST 2017
+Total number of files and folders are scanned
