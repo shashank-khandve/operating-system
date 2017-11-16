@@ -17,7 +17,8 @@ int main ()
 
 	semSHM=sem_open("semWrite1",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR,0);
   	semSHMW=sem_open("semWrite2",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR,0);
-	
+	sem_init(semWrite1,1,0);
+	sem_init(semWrite2,1,0);
 
   	fd=shm_open("sharedMem",O_CREAT|O_RDWR,S_IRUSR|S_IWUSR);
 	ftruncate(fd,sizeof(int*));
@@ -31,12 +32,12 @@ int main ()
 	while(1)
 	{
 		
-		sem_wait(semSHM);
+		sem_wait(semWrite1);
   		*data=*data++;
-  		sem_post(semSHM);
-		sem_wait(semSHMW);	
+  		//sem_post(semSHM);
+		sem_wait(semWrite2);	
   		*tempBuffer=*tempBuffer++;
-		sem_post(semSHMW);
+		//sem_post(semSHMW);
 	}
 	return 0;
 }
