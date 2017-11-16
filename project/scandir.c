@@ -1,6 +1,8 @@
 #include <dirent.h> 
 #include <stdio.h> 
 #include <string.h>
+#include <stdlib.h>
+
 #define NORMAL_COLOR  "\x1B[0m"
 #define GREEN  "\x1B[32m"
 #define BLUE  "\x1B[34m"
@@ -42,8 +44,8 @@ void scan_s()
 	printf("%sTotal	number of folders:%d\n",BLUE,b);
 	printf("%s\n", NORMAL_COLOR);
 	
-	//system("(echo Total number of files and folders are scanned)>>log.txt");
-	//system("printf("%d %d",a,b)>>log.txt");
+	system("(echo files and folders are scanned)>>log.txt");
+
 	return;
 	
 }

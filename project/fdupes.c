@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<string.h>
+#include <stdlib.h>
+
 void fdupes_s()
 {
 	system("date>>log.txt");
